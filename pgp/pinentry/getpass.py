@@ -44,15 +44,15 @@ class GetPassPinentry(object):
             raise KeyError(cache_id)
 
         if prompt:
-            print(prompt, file=stream)
+            stream.write(prompt + '\n')
         if description:
-            print(description, file=stream)
+            stream.write(description + '\n')
 
         match = False
         while not match:
             match = True
             if error_message:
-                print(error_message, file=stream)
+                stream.write(error_message + '\n')
             passphrase = getpass('Password: ', stream=stream)
             for _i in range(repeat):
                 if getpass('Confirm: ', stream=stream) != passphrase:

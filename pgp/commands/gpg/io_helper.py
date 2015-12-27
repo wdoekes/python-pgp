@@ -75,7 +75,7 @@ class IOHelper(object):
         self.enable_special_filenames = enable_special_filenames
 
         if not no_greeting:
-            print('Welcome!', file=self.stdout)
+            self.stdout.write('Welcome!\n')
 
     def open_filename(self, filename, mode='r'):
         if self.enable_special_filenames:
